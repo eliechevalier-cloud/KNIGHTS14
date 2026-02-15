@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KNIGHTS14 - My Artistic Project</title>
+    <title>KNIGHTS14 - Listen.</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,10 +11,10 @@
         <div class="container">
             <div class="logo">KNIGHTS14</div>
             <ul class="nav-links">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#galerie">Galerie</a></li>
-                <li><a href="#a-propos">À Propos</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#accueil">HOME</a></li>
+                <li><a href="#galerie">COMING SOON</a></li>
+                <li><a href="#a-propos">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
             </ul>
         </div>
     </nav>
@@ -22,34 +22,34 @@
     <section id="accueil" class="hero">
         <div class="hero-content">
             <h1>KNIGHTS14</h1>
-            <p>Mon Projet Artistique</p>
-            <a href="#galerie" class="btn">Découvrir</a>
+            <p>My Artistic Project</p>
+            <a href="#galerie" class="btn">Discover</a>
         </div>
     </section>
 
     <section id="galerie" class="galerie">
         <div class="container">
-            <h2>Galerie</h2>
+            <h2>Coming Soon</h2>
             <div class="galerie-grid">
-                <div class="galerie-item">
-                    <div class="galerie-placeholder">Œuvre 1</div>
-                    <h3>Titre de l'œuvre</h3>
-                    <p>Description de votre première création artistique.</p>
+                <div class="galerie-item single-1">
+                    <div class="galerie-placeholder">Singe #1</div>
+                    <h3>OPENING</h3>
+                    <p>April 1, 2026</p>
                 </div>
-                <div class="galerie-item">
-                    <div class="galerie-placeholder">Œuvre 2</div>
-                    <h3>Titre de l'œuvre</h3>
-                    <p>Description de votre deuxième création artistique.</p>
+                <div class="galerie-item single-2">
+                    <div class="galerie-placeholder">Singe #2</div>
+                    <h3>MARATHON</h3>
+                    <p>May 1, 2026</p>
                 </div>
-                <div class="galerie-item">
-                    <div class="galerie-placeholder">Œuvre 3</div>
-                    <h3>Titre de l'œuvre</h3>
-                    <p>Description de votre troisième création artistique.</p>
+                <div class="galerie-item single-3">
+                    <div class="galerie-placeholder">Singe #3</div>
+                    <h3>RECKONING</h3>
+                    <p>June 1, 2026</p>
                 </div>
-                <div class="galerie-item">
-                    <div class="galerie-placeholder">Œuvre 4</div>
-                    <h3>Titre de l'œuvre</h3>
-                    <p>Description de votre quatrième création artistique.</p>
+                <div class="galerie-item single-4">
+                    <div class="galerie-placeholder">Singe #4</div>
+                    <h3>BIRTH</h3>
+                    <p>July 1, 2026</p>
                 </div>
             </div>
         </div>
@@ -57,27 +57,28 @@
 
     <section id="a-propos" class="about">
         <div class="container">
-            <h2>À Propos</h2>
-            <p>KNIGHTS14 est un projet artistique personnel qui explore les thèmes de la créativité, de l'innovation et de l'expression individuelle. Chaque création représente une étape de mon parcours artistique.</p>
-            <p>Bienvenue dans cet univers unique où l'art prend vie.</p>
+            <h2>About</h2>
+            <p>KNIGHTS14 2024 – Music Exploration</p>
+            <p>Be ready. We are coming soon.</p>
         </div>
     </section>
 
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Contact</h2>
-            <form class="contact-form">
-                <input type="text" placeholder="Votre nom" required>
-                <input type="email" placeholder="Votre email" required>
-                <textarea placeholder="Votre message" rows="5" required></textarea>
-                <button type="submit" class="btn">Envoyer</button>
+            <h2>Partnership contact form</h2>
+            <form class="contact-form" id="contactForm">
+                <input type="text" name="name" placeholder="Your name" required>
+                <input type="email" name="email" placeholder="Your email" required>
+                <textarea name="message" placeholder="Your message" rows="5" required></textarea>
+                <button type="submit" class="btn">Send</button>
             </form>
+            <div id="formMessage" class="form-message" style="display: none;"></div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 KNIGHTS14 - Tous droits réservés</p>
+            <p>&copy; 2026 KNIGHTS14 - All rights reserved</p>
             <div class="social-links">
                 <a href="#" class="social-link">Instagram</a>
                 <a href="#" class="social-link">Twitter</a>
@@ -85,6 +86,40 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal -->
+    <div id="singleModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle">Single Title</h2>
+            <div class="modal-info">
+                <div class="info-item">
+                    <strong>Release Date:</strong>
+                    <p id="modalDate">April 1, 2026</p>
+                </div>
+                <div class="info-item">
+                    <strong>Label:</strong>
+                    <p id="modalLabel">KNIGHTS14 Records</p>
+                </div>
+                <div class="info-item">
+                    <strong>Release Place:</strong>
+                    <p id="modalPlace">Worldwide</p>
+                </div>
+                <div class="info-item">
+                    <strong>Genre:</strong>
+                    <p id="modalGenre">Electronic Music</p>
+                </div>
+                <div class="info-item">
+                    <strong>Duration:</strong>
+                    <p id="modalDuration">4:30</p>
+                </div>
+            </div>
+            <div class="modal-description">
+                <strong>Description:</strong>
+                <p id="modalDescription">A unique musical piece exploring innovative sounds and artistic expressions.</p>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
