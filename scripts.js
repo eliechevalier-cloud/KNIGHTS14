@@ -50,9 +50,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Header background on scroll
+// Header background on scroll and active nav link - Consolidated and throttled
 const header = document.querySelector('.header');
-window.addEventListener('scroll', () => {
+const sections = document.querySelectorAll('section[id]');
+
+let scrollTimeout;
+function handleScroll() {
+    // Header background
     if (window.scrollY > 100) {
         header.style.background = 'rgba(26, 26, 46, 0.98)';
         header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.5)';
@@ -60,14 +64,9 @@ window.addEventListener('scroll', () => {
         header.style.background = 'rgba(26, 26, 46, 0.95)';
         header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
     }
-});
 
-// Active nav link on scroll
-const sections = document.querySelectorAll('section[id]');
-
-function highlightNavLink() {
+    // Active nav link
     const scrollY = window.pageYOffset;
-
     sections.forEach(section => {
         const sectionHeight = section.offsetHeight;
         const sectionTop = section.offsetTop - 100;
@@ -86,7 +85,14 @@ function highlightNavLink() {
     });
 }
 
-window.addEventListener('scroll', highlightNavLink);
+// Throttle scroll events
+window.addEventListener('scroll', () => {
+    if (scrollTimeout) return;
+    scrollTimeout = setTimeout(() => {
+        handleScroll();
+        scrollTimeout = null;
+    }, 16); // ~60fps
+});
 
 // Music Player Simulation
 const playButtons = document.querySelectorAll('.play-btn');
@@ -243,12 +249,19 @@ document.querySelectorAll('.music-card, .event-card, .gallery-item, .stat-item')
     observer.observe(el);
 });
 
-// Parallax effect for hero section
+// Parallax effect for hero section - using requestAnimationFrame
+let parallaxTicking = false;
 window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+    if (!parallaxTicking) {
+        window.requestAnimationFrame(() => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            parallaxTicking = false;
+        });
+        parallaxTicking = true;
     }
 });
 
@@ -269,22 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
 });
 
-// Performance optimization - Lazy load images if we had real images
-// This is a placeholder for future image implementation
-function lazyLoadImages() {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
 
-    document.querySelectorAll('img.lazy').forEach(img => imageObserver.observe(img));
-}
 
 // Handle window resize
 let resizeTimer;
